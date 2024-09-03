@@ -8,20 +8,23 @@ const formatTime = (seconds: number) => {
 };
 
 const PopOutPlayer: React.FC<{
-  album: { cover: string; title: string; artist: string; audioSrc: string };
-  onClose: () => void;
-  audioElement: HTMLAudioElement | null;
-  setAudioElement: React.Dispatch<React.SetStateAction<HTMLAudioElement | null>>;
-  setCurrentlyPlaying: React.Dispatch<React.SetStateAction<number | null>>;
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
-  currentTime: number;
-  setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
-}> = ({ album, onClose, audioElement, setIsPlaying, currentTime, setCurrentTime }) => {
+    album: { cover: string; title: string; artist: string; audioSrc: string };
+    onClose: () => void;
+    audioElement: HTMLAudioElement | null;
+    currentlyPlaying: number | null; // Ensure this is included
+    setCurrentlyPlaying: React.Dispatch<React.SetStateAction<number | null>>;
+    setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+    currentTime: number;
+    setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
+    handlePlay: () => Promise<void>; // Add this line
+  }> = ({ album, onClose, audioElement, currentlyPlaying, setCurrentlyPlaying, setIsPlaying, currentTime, setCurrentTime, handlePlay }) => {
   
   const handlePlayPause = () => {
     if (audioElement) {
       if (audioElement.paused) {
-        audioElement.play();
+        audioElement.play().catch(error => {
+          console.error("Error playing audio:", error);
+        });
         setIsPlaying(true);
       } else {
         audioElement.pause();

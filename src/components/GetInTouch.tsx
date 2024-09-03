@@ -14,10 +14,7 @@ const GetInTouch: React.FC = () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPercent = scrollTop / maxScroll;
-
-        // Adjust the calculation to fit the button within the shortened line range
-        const newLeftPosition = scrollPercent * (100 - 8); // 4% total offset (2% each side)
-
+        const newLeftPosition = 20 + (scrollPercent * 60);
         setScrollPosition(newLeftPosition);
     };
 
@@ -63,7 +60,7 @@ const GetInTouch: React.FC = () => {
         <div style={{
             backgroundColor: '#000000',
             color: '#FFFFFF',
-            minHeight: '100vh', // Ensure content fits within one viewport
+            minHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -75,9 +72,9 @@ const GetInTouch: React.FC = () => {
             {/* Horizontal Line */}
             <div style={{
                 position: 'absolute',
-                top: '50%',  // Center the line vertically
-                left: '20px', // Shortened from left edge
-                right: '20px', // Shortened from right edge
+                top: '50%',
+                left: '20%',
+                right: '20%',
                 height: '2px',
                 backgroundColor: '#FF69B4',
                 transform: 'translateY(-50%)',
@@ -87,21 +84,21 @@ const GetInTouch: React.FC = () => {
             <div style={{
                 position: 'absolute',
                 left: '10px',
-                top: '30%', // Adjusted to fit within the viewport
+                top: '30%',
                 transform: 'translateY(-50%)',
+                textAlign: 'center',
             }}>
-                <h1 style={{ fontSize: '4rem', marginBottom: '1rem' }}>Let's work</h1>
-                <h1 style={{ fontSize: '4rem', marginBottom: '1rem' }}>together !</h1>
+                <h1 style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', marginBottom: '1rem' }}>Let's work</h1>
+                <h1 style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', marginBottom: '1rem' }}>together!</h1>
             </div>
 
             {/* Button that moves along the horizontal line */}
             <div style={{
                 position: 'absolute',
-                left: `calc(${scrollPosition}% + 20px)`, // Constrain button within the line range
-                top: '50%',  // Align the button to the line
+                left: `${scrollPosition}%`,
+                top: '50%',
                 transform: 'translate(-50%, -50%)',
-                transition: 'left 0.1s ease-out', // Smooth glide
-                maxWidth: 'calc(100% + 700px)', // Prevent button from going off-screen
+                transition: 'left 0.1s ease-out',
             }}>
                 <Link 
                     to="/contact" 
@@ -110,13 +107,13 @@ const GetInTouch: React.FC = () => {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        width: '200px',
-                        height: '200px',
+                        width: 'clamp(100px, 30vw, 200px)',
+                        height: 'clamp(100px, 30vw, 200px)',
                         backgroundColor: '#FF69B4',
                         color: '#FFFFFF',
                         textDecoration: 'none',
                         borderRadius: '50%',
-                        fontSize: '1.5rem',
+                        fontSize: 'clamp(1rem, 3vw, 1.5rem)',
                         fontWeight: 'bold',
                         position: 'relative',
                         overflow: 'hidden',
@@ -141,15 +138,15 @@ const GetInTouch: React.FC = () => {
                 bottom: '20px',
                 width: '100%',
                 display: 'flex',
-                flexDirection: 'column', // Stack vertically on small screens
+                flexDirection: 'column',
                 alignItems: 'center',
             }}>
                 <div style={{
                     display: 'flex',
-                    flexDirection: 'column', // Stack vertically on small screens
+                    flexDirection: 'column',
                     alignItems: 'center',
                     width: '100%',
-                    gap: '10px', // Space between buttons
+                    gap: '10px',
                 }}>
                     <AnimatedButton href={`mailto:${email}`} text={email} icon="fa-envelope" />
                     <AnimatedButton href={`tel:${phone}`} text={phone} icon="fa-phone" />
