@@ -1,0 +1,10 @@
+/* styles.css or your main CSS file */
+@keyframes backgroundTransition {
+    0% { background-color: #A0D8E1; }
+    50% { background-color: #B2E0B2; }
+    100% { background-color: #E1B2E0; }
+  }
+  
+  .background-transition {
+    animation: backgroundTransition 4s infinite alternate; /* Adjust duration as needed */
+  }
