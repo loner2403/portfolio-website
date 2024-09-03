@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import CircularProgress from './CircularProgress';
 import album1 from "../assets/album1.jpeg";
 import album2 from "../assets/albun2.jpeg";
 import album3 from "../assets/album3.jpeg";
@@ -145,19 +144,18 @@ const MusicSection: React.FC<MusicSectionProps> = ({ id }) => {
       </motion.div>
 
       {selectedAlbum !== null && (
-        <PopOutPlayer 
-          album={albums[selectedAlbum]} 
-          onClose={closePopOut} 
-          audioElement={audioElements[selectedAlbum]}
-          currentlyPlaying={currentlyPlaying}
-          setCurrentlyPlaying={setCurrentlyPlaying} 
-          isPlaying={isPlaying}
-          setIsPlaying={setIsPlaying} 
-          currentTime={currentTime} 
-          setCurrentTime={setCurrentTime} 
-          handlePlay={() => handlePlay(selectedAlbum)}
-        />
-      )}
+  <PopOutPlayer 
+    album={albums[selectedAlbum]} 
+    onClose={closePopOut} 
+    audioElement={audioElements[selectedAlbum]}
+    currentlyPlaying={currentlyPlaying} // Ensure this prop is passed
+    setCurrentlyPlaying={setCurrentlyPlaying} 
+    setIsPlaying={setIsPlaying} 
+    currentTime={currentTime} 
+    setCurrentTime={setCurrentTime} 
+    handlePlay={() => handlePlay(selectedAlbum)} // If needed
+  />
+)}
     </section>
   );
 };

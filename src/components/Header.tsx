@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { IoHomeOutline, IoMusicalNotesOutline,IoPersonOutline, IoMailOutline } from "react-icons/io5";
+import { IoHomeOutline, IoMusicalNotesOutline, IoPersonOutline, IoMailOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import logo from "../assets/logo1.png";
 
@@ -10,10 +10,8 @@ const Header: React.FC = () => {
   const navigate = useNavigate(); // Create navigate function
 
   const navItems = [
-    { text: 'Home', icon: <IoHomeOutline />, to: () => { navigate('/#hero') } },
-    { text: 'Music', icon: <IoMusicalNotesOutline />, to: () => {
-      navigate('/#music');
-    }},
+    { text: 'Home', icon: <IoHomeOutline />, to: () => navigate('/') }, // Navigate to home
+    { text: 'Music', icon: <IoMusicalNotesOutline />, to: () => navigate('/#music') }, // Navigate to music section
     { text: 'About', icon: <IoPersonOutline />, to: () => navigate('/about') },
     { text: 'Contact', icon: <IoMailOutline />, to: () => navigate('/contact') }
   ];

@@ -17,7 +17,7 @@ const PopOutPlayer: React.FC<{
     currentTime: number;
     setCurrentTime: React.Dispatch<React.SetStateAction<number>>;
     handlePlay: () => Promise<void>; // Add this line
-  }> = ({ album, onClose, audioElement, currentlyPlaying, setCurrentlyPlaying, setIsPlaying, currentTime, setCurrentTime, handlePlay }) => {
+  }> = ({ album, onClose, audioElement, setIsPlaying, currentTime, setCurrentTime, }) => {
   
   const handlePlayPause = () => {
     if (audioElement) {
