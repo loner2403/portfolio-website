@@ -4,9 +4,10 @@ interface AnimatedButtonProps {
   href: string;
   text: string;
   icon: string;
+  style?: React.CSSProperties; // Allow passing additional styles
 }
 
-const AnimatedButton: React.FC<AnimatedButtonProps> = ({ href, text, icon }) => {
+const AnimatedButton: React.FC<AnimatedButtonProps> = ({ href, text, icon, style }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({ href, text, icon }) => 
       style={{
         display: 'inline-flex',
         alignItems: 'center',
+        justifyContent: 'center', // Center the content horizontally
         padding: '10px 20px',
         borderRadius: '25px',
         textDecoration: 'none',
@@ -27,15 +29,18 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({ href, text, icon }) => 
         position: 'relative',
         overflow: 'hidden',
         transition: 'color 0.3s ease',
-        fontSize: '1.5rem', // Font size similar to header text
-        fontWeight: 'bold', // Bold font weight
-        letterSpacing: '0.05em', // Optional: add spacing for better readability
+        fontSize: 'clamp(1rem, 2.5vw, 1.5rem)', // Responsive font size
+        fontWeight: 'bold',
+        letterSpacing: '0.05em',
+        width: 'clamp(100px, 30vw, 200px)', // Responsive width
+        height: 'clamp(40px, 10vw, 60px)', // Responsive height
+        ...style, // Apply additional styles passed as props
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <i className={`fa ${icon}`} style={{ marginRight: '10px', position: 'relative', zIndex: 1 }} />
-      <span style={{ position: 'relative', zIndex: 1 }}>{text}</span>
+      <span style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>{text}</span>
       <div
         style={{
           position: 'absolute',

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import AnimatedButton from './AnimatedButton';
 
 const GetInTouch: React.FC = () => {
-    const email = "info@dennissnellenberg.com";
+    const email = "slimsky@gnail.com";
     const phone = "+91 7989626247";
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
@@ -148,8 +148,18 @@ const GetInTouch: React.FC = () => {
                     width: '100%',
                     gap: '10px',
                 }}>
-                    <AnimatedButton href={`mailto:${email}`} text={email} icon="fa-envelope" />
-                    <AnimatedButton href={`tel:${phone}`} text={phone} icon="fa-phone" />
+                    <AnimatedButton 
+                        href={`mailto:${email}`} 
+                        text={email} 
+                        icon="fa-envelope" 
+                        style={{ width: '100%', maxWidth: '300px' }} // Responsive width
+                    />
+                    <AnimatedButton 
+                        href={`tel:${phone}`} 
+                        text={phone} 
+                        icon="fa-phone" 
+                        style={{ width: '100%', maxWidth: '300px' }} // Responsive width
+                    />
                 </div>
             </div>
         </div>
