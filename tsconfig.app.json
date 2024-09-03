@@ -4,13 +4,15 @@
     "lib": ["ES2022", "DOM"],
     "module": "ESNext",
     "jsx": "react-jsx",  // Ensure this line is present
-    "moduleResolution": "node",
     "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true, // Add this line
+    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
+    "noEmit": true,
     "allowSyntheticDefaultImports": true // Add this line
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
